@@ -9,3 +9,9 @@ ncBlocks: ncBlocks.cpp
 
 ncmouse: ncmouse.cpp
 	g++ -o ncmouse ncmouse.cpp -lncurses
+
+p2: p2.cpp
+	g++ -o p2 p2.cpp -lncurses
+
+p3: p3.cpp
+	g++ -o p3 p3.cpp -lncurses
