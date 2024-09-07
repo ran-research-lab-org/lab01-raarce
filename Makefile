@@ -15,3 +15,12 @@ p2: p2.cpp
 
 p3: p3.cpp
 	g++ -o p3 p3.cpp -lncurses
+
+p4: p4.cpp
+	g++ -o p4 p4.cpp -lncurses
+
+p5: p5.cpp
+	g++ -o p5 p5.cpp -lncurses
+
+lab05-p1: lab05-p1.cpp
+	g++ -o lab05-p1 lab05-p1.cpp -lncurses

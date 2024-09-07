@@ -1,5 +1,5 @@
 // Tu nombre
-// Animación básica usando ncurses
+// Tu descripción aquí
 
 #include <ncurses.h>
 #include <unistd.h>
@@ -23,27 +23,29 @@ int main()
     // Define color pairs
     init_pair(1, COLOR_RED, COLOR_BLACK);  // Red text on black background
     init_pair(2, COLOR_GREEN, COLOR_BLUE); // Green text on black background
-    init_pair(3, COLOR_BLUE, COLOR_WHITE); // Blue text on white background
+    init_pair(3, COLOR_BLUE, COLOR_YELLOW); // Blue text on white background
     init_pair(4, COLOR_YELLOW, COLOR_RED); // Blue text on white background
 
     curs_set(0);
     // Enable keypad input and non-blocking input
     keypad(stdscr, TRUE);
     timeout(0);
-
-    int x = 0;
-    int y = 0;
-    // lo siguiente es un loop infinito que en cada vuelta actualiza
-    // la posición en la que se dibuja el rectangulo
+ 
+    int c = 0;
     while (1)
     {
         clear();
-        draw_rectangle(10, x, 2, 3, 2, ' ');
-        draw_rectangle(y, 10, 2, 3, 4, ' ');
+        // upper left
+        draw_rectangle(0, 0, LINES/2, COLS/2, (c + 4)%4 + 1, ' ');
+        // upper right
+        draw_rectangle(0, COLS/2, LINES/2, COLS/2, (c + 3)%4 + 1, ' ');
+        // lower right
+        draw_rectangle(LINES/2, COLS/2, LINES, COLS, (c + 2)%4 + 1, ' ');
+        // lower left
+        draw_rectangle(LINES/2, 0, LINES/2, COLS/2, (c + 1)%4 + 1, ' ');
         refresh();
-        x = (x + 1) % COLS;
-        y = (y + 1) % LINES;
-        usleep(50000);
+        c = (c + 1) % 4;
+        usleep(1000000);
         
     }
     
